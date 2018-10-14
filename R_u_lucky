@@ -1,0 +1,41 @@
+#! /usr/bin/awk
+BEGIN{
+  score=0
+ print "Are you good at guessing?"
+ print "yes/no"
+ getline confirmation
+
+ if(confirmation == "yes"){
+   print"ohh! cool"
+   print"Then check your luck"
+
+   do {
+     print "enter a no. between 0-9:"
+     getline no1
+     srand()
+     actual_no=int(rand() * 10)
+     if(no1 == actual_no) {
+       print "Hurray...nice guess"
+       score+=10}
+     else {
+       print "Oops! wrong guess"
+       print "actual no. is: " actual_no
+       print "score: "score
+     }
+     print "you wanna play again (yes / no)" 
+     getline confirm
+   }
+   while (confirm == "yes")
+     if(confirm == "no"){
+       print "score: " score
+       if(previous<score){
+         previous=score
+       }
+       print "highscore: " previous
+     print "ok see you again, Bye"
+   } 
+ } 
+ else{
+   print "you left the game :)"
+ }
+};
